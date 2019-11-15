@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Zeus Prototype</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://unpkg.com/@ag-grid-enterprise/all-modules/dist/ag-grid-enterprise.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@ag-grid-community/all-modules/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="Figure1" class="Figure Page">
+      <h2>Recent Jobs</h2>
+      <div id="Zeus-Jobs" class="ag-theme-balham"></div>
+      <div id="Zeus-Head">
+        <a class="fas fa-bars" href="#"></a>
+        <div id="Zeus-Head-Title">Dashboard</div>
+        <a class="fas fa-ellipsis-v" href="#"></a>
+      </div>
+    </div>
+    <div id="Figure2" class="Figure">
+      <div class="Page-Split">
+        <div>
+          <div class="Section">
+            <div class="Section-Head Section-Top">
+              <div><a href="#">Hooli Integrations</a> ‣ <span title="hooli_vendo_eligibility_pretend_this_had_a_really_long_integration_name_that_was_truncated">hooli_vendo_eligibility</span></div>
+              <div>
+                <button id="Zeus-Run-Integration" class="Button Button-Secondary"><i class="fas fa-running"></i> Integration</button>
+                <button class="Button Button-Primary"><i class="far fa-edit"></i> Edit</button>
+              </div>
+            </div>
+          </div>
+          <div class="Section">
+            <div class="Section-Head">
+              <div><i class="far fa-file"></i> Files</div>
+              <div></div>
+            </div>
+          </div>
+          <div class="Section">
+            <div class="Section-Head">
+              <div><i class="fas fa-history"></i> Activity</div>
+              <div></div>
+            </div>
+            <div id="Zeus-Activity" class="ag-theme-balham"></div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+      <div id="Zeus-Head">
+        <a class="fas fa-bars" href="#"></a>
+        <div id="Zeus-Head-Title">View Integration</div>
+        <a class="fas fa-ellipsis-v" href="#"></a>
+      </div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
