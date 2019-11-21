@@ -28,7 +28,6 @@ function getFiles() {
     file.landed = (Math.random() > 0.2)
     files.push(file)
   }
-  console.log(files)
   return files
 }
 
@@ -45,6 +44,27 @@ function getQualityStatus() {
 //     'hooli_vendo_eligibility'
 //   }
 // }
+
+function getTables() {
+  return [
+    {
+      files_new_refresh: 2,
+      files_new_run: 1,
+      files_total: 23,
+      lander: 'lander_1234…',
+      name: 'hooli_vendo_1…_source',
+      status: 'Landed 4h ago',
+    },
+    {
+      files_new_refresh: 3,
+      files_new_run: 2,
+      files_total: 45,
+      lander: 'lander_2345…',
+      name: 'hooli_vendo_2…_source',
+      status: 'Landed 1d ago',
+    },
+  ]
+}
 
 function runJob() {
   let job = {}
@@ -156,6 +176,59 @@ const gridOptions_Files = {
 }
 new agGrid.Grid(document.querySelector('#Zeus-Files'), gridOptions_Files)
 
+const gridOptions_Tables = {
+  defaultColDef: {
+    enableRowGroup: true,
+    enablePivot: true,
+    filter: 'agTextColumnFilter',
+    resizable: true,
+    sortable: true,
+  },
+  domLayout: 'autoHeight',
+  floatingFilter: true,
+  columnDefs: [
+    {headerName: 'Lander', field: 'lander'},
+    {headerName: 'Name', field: 'name'},
+    {headerName: 'Status', field: 'status'},
+    {headerName: 'Files', cellRenderer: (params) => params.data.files_total +' (+'+ params.data.files_new_refresh +' new)'},
+    {headerName: 'Actions', cellRenderer: () => '<a class="far fa-eye" href="#"></a>'}
+  ],
+  rowData: getTables(),
+  onFirstDataRendered: (params) => params.api.sizeColumnsToFit(),
+  onGridReady: autoSizeActivity,
+}
+new agGrid.Grid(document.querySelector('#Zeus-Tables'), gridOptions_Tables)
+
+
+const gridOptions_Deequ = {
+  defaultColDef: {
+    enableRowGroup: true,
+    enablePivot: true,
+    filter: 'agTextColumnFilter',
+    resizable: true,
+    sortable: true,
+  },
+  domLayout: 'autoHeight',
+  floatingFilter: true,
+  columnDefs: [
+    {headerName: 'Column', field: 'column'},
+    {headerName: 'Complete', field: 'complete'},
+    {headerName: 'Distinct', field: 'distinct'},
+    {headerName: 'Mean', field: 'mean'},
+    {headerName: 'Max', field: 'max'},
+    {headerName: 'Min', field: 'min'},
+    {headerName: 'Sum', field: 'sum'},
+    {headerName: 'Std Deviation', field: 'std_dev'},
+  ],
+  rowData: [
+    {column: 'icd_vrsn_cd', complete: 1, distinct: 2, mean: 9.9516, max: 10, min: 9, sum: 4348554, std_dev: 0.2144},
+    {column: 'mbr_sqnc_nbr', complete: 0.999, distinct: 17, mean: 1.7958, max: 10, min: 9, sum: 4348554, std_dev: 18.179},
+  ],
+  onFirstDataRendered: (params) => params.api.sizeColumnsToFit(),
+  onGridReady: autoSizeActivity,
+}
+new agGrid.Grid(document.querySelector('#Zeus-Deequ'), gridOptions_Deequ)
+
 function linkToDatabricks(params) {
   return '<a href="#" title="View on Databricks">'+ params.value +'</a>'
 }
@@ -205,3 +278,13 @@ document.addEventListener('keydown', (e) => {
     stateChanged()
   }
 })
+
+// scrollreveal.js
+
+const fadeUp = {
+  distance: '30%',
+  interval: 50,
+  origin: 'bottom'
+};
+
+ScrollReveal().reveal('.Figure', fadeUp);

@@ -68,7 +68,10 @@ a {
   min-height: 480px;
   padding-top: 40px;
 }
-.Page-Split > div { flex: 0 1 50%; }
+.Page-Split > div {
+  flex: 0 1 50%;
+  padding-bottom: 9px;
+}
 .Page-Split > div:first-child { border-right: 1px solid #bcd; }
 
 .Section {
@@ -130,9 +133,50 @@ a {
   color: #28f;
 }
 
+.Tabs {
+  border-bottom: 1px solid #bcd;
+  display: flex;
+}
+.Tabs a {
+  border-bottom: 4px solid transparent;
+  color: inherit;
+  padding: 8px;
+}
+
+.Tabs .selected {
+  border-bottom-color: #28f;
+  color: #28f;
+}
+
 .fail {
   background: rgba(238,68,102,.1) !important;
   color: #e46;
 }
 
-#Figure4 { display: none }
+#Figure4,
+#Figure5,
+#Figure6,
+#Figure7 { display: none }
+
+/* custom ag-grid theme */
+.ag-theme-zeus { font-size: 13px; }
+.ag-theme-zeus * { box-sizing: border-box; }
+.ag-theme-zeus .ag-header-cell-text { color: #789; }
+.ag-theme-zeus .ag-floating-filter-input {
+  background: none;
+  border: 1px solid #bcd;
+  border-radius: 2px;
+}
+.ag-theme-zeus .ag-floating-filter-input:hover {
+  background: #fff;
+}
+.ag-theme-zeus .ag-header-cell,
+.ag-theme-zeus .ag-header-group-cell,
+.ag-theme-zeus .ag-cell { padding: 0 8px; }
+.ag-theme-zeus .ag-row { line-height: 24px; }
+.ag-theme-zeus .ag-row-even {
+  background: #fff;
+  border-radius: 4px;
+}
+
+.ag-theme-zeus .ag-floating-filter-button { display: none; }
